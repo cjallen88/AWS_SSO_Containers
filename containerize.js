@@ -133,9 +133,9 @@ function listener(details) {
         const tab = await browser.tabs.get(details.tabId);
 
         createTabParams.index = tab.index;
-        browser.tabs.create(createTabParams);
+        await browser.tabs.create(createTabParams);
 
-        browser.tabs.remove(details.tabId);
+        await browser.tabs.remove(details.tabId);
       } else {
         filter.write(encoder.encode(str));
       }
@@ -281,9 +281,9 @@ async function samlListener(details) {
     index: tab.index,
   };
 
-  browser.tabs.create(createTabParams);
+  await browser.tabs.create(createTabParams);
 
-  browser.tabs.remove(details.tabId);
+  await browser.tabs.remove(details.tabId);
 
   return { cancel: true };
 }
